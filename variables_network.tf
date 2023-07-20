@@ -62,8 +62,8 @@ variable "network_map_aci" {
   }))
 
   default = {
-    aci_1500 = {
-      vlan = 1500
+    aci_1599 = {
+      vlan = 1599
       qos  = "best effort"
     }
   }
