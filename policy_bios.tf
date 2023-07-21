@@ -20,10 +20,10 @@ resource "intersight_bios_policy" "linux" {
     moid = local.organization
   }
 
-  intel_vt_for_directed_io    = "disabled"
-  cpu_perf_enhancement        = "Auto"
-  processor_c1e               = "enabled"
-  processor_c6report          = "enabled"
-  energy_efficient_turbo      = "enabled"
-  work_load_config            = "Balanced"
+  intel_vt_for_directed_io = "disabled"
+  cpu_perf_enhancement     = "Auto"
+  processor_c1e            = "enabled"
+  processor_c6report       = "enabled"
+  energy_efficient_turbo   = "enabled"
+  work_load_config         = "Balanced"
 }
