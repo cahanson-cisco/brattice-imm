@@ -1,5 +1,5 @@
-resource "intersight_server_profile_template" "brattice-esxi" {
-  name = "brattice-esxi"
+resource "intersight_server_profile_template" "geppetto-esxi" {
+  name = "geppetto-esxi"
   tags = [local.terraform]
   organization {
     moid = local.organization
