@@ -9,8 +9,8 @@ resource "intersight_vnic_lan_connectivity_policy" "brattice-esxi" {
   target_platform = "FIAttached"
 }
 
-resource "intersight_vnic_eth_if" "nxos-a" {
-  name = "nxos-a"
+resource "intersight_vnic_eth_if" "aci-a" {
+  name = "aci-a"
   tags = [local.terraform]
 
   order            = 2
@@ -30,7 +30,7 @@ resource "intersight_vnic_eth_if" "nxos-a" {
   }
 
   fabric_eth_network_group_policy {
-    moid = intersight_fabric_eth_network_group_policy.nxos.moid
+    moid = intersight_fabric_eth_network_group_policy.aci.moid
   }
 
   fabric_eth_network_control_policy {
@@ -54,8 +54,8 @@ resource "intersight_vnic_eth_if" "nxos-a" {
   }
 }
 
-resource "intersight_vnic_eth_if" "nxos-b" {
-  name = "nxos-b"
+resource "intersight_vnic_eth_if" "aci-b" {
+  name = "aci-b"
   tags = [local.terraform]
 
   order            = 3
@@ -76,7 +76,7 @@ resource "intersight_vnic_eth_if" "nxos-b" {
   }
 
   fabric_eth_network_group_policy {
-    moid = intersight_fabric_eth_network_group_policy.nxos.moid
+    moid = intersight_fabric_eth_network_group_policy.aci.moid
   }
 
   fabric_eth_network_control_policy {
@@ -100,8 +100,8 @@ resource "intersight_vnic_eth_if" "nxos-b" {
   }
 }
 
-resource "intersight_vnic_eth_if" "aci-a" {
-  name = "aci-a"
+resource "intersight_vnic_eth_if" "vmm-a" {
+  name = "vmm-a"
   tags = [local.terraform]
 
   order            = 4
@@ -145,8 +145,8 @@ resource "intersight_vnic_eth_if" "aci-a" {
   }
 }
 
-resource "intersight_vnic_eth_if" "aci-b" {
-  name = "aci-b"
+resource "intersight_vnic_eth_if" "vmm-b" {
+  name = "vmm-b"
   tags = [local.terraform]
 
   order            = 5
