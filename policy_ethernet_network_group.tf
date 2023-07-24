@@ -45,7 +45,7 @@ resource "intersight_fabric_eth_network_group_policy" "vlan-1599-native" {
   }
 
   vlan_settings {
-    native_vlan   = var.network_map_nxos.aci_1599.vlan
-    allowed_vlans = var.network_map_nxos.aci_1599.vlan
+    native_vlan   = var.network_map_aci.aci_1599.vlan
+    allowed_vlans = var.network_map_aci.aci_1599.vlan
   }
 }
