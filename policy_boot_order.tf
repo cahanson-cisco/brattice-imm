@@ -40,3 +40,55 @@ resource "intersight_boot_precision_policy" "m2_boot" {
     })
   }
 }
+
+resource "intersight_boot_precision_policy" "san_boot" {
+  name = "san_boot"
+  tags = [local.terraform]
+  organization {
+    moid = local.organization
+  }
+
+  configured_boot_mode     = "Uefi"
+  enforce_uefi_secure_boot = false
+
+  boot_devices {
+    enabled     = true
+    name        = "pure-a"
+    object_type = "boot.San"
+    additional_properties = jsonencode({
+      Slot           = "MLOM"
+      interface_name = "vhba-a"
+      lun            = 1
+      wwpn           = "52:4A:93:71:20:FF:59:00"
+      Bootloader = {
+        Name       = "BOOTX64.EFI"
+        Path       = "\\EFI\\BOOT"
+        ObjectType = "boot.Bootloader"
+      }
+    })
+  }
+  boot_devices {
+    enabled     = true
+    name        = "pure-b"
+    object_type = "boot.San"
+    additional_properties = jsonencode({
+      Slot           = "MLOM"
+      interface_name = "vhba-b"
+      lun            = 1
+      wwpn           = "52:4A:93:71:20:FF:59:10"
+      Bootloader = {
+        Name       = "BOOTX64.EFI"
+        Path       = "\\EFI\\BOOT"
+        ObjectType = "boot.Bootloader"
+      }
+    })
+  }
+  boot_devices {
+    enabled     = true
+    name        = "KVMDVD"
+    object_type = "boot.VirtualMedia"
+    additional_properties = jsonencode({
+      Subtype = "kvm-mapped-dvd"
+    })
+  }
+}
