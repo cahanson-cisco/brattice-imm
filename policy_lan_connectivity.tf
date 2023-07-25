@@ -30,7 +30,7 @@ resource "intersight_vnic_eth_if" "aci-a" {
   }
 
   fabric_eth_network_group_policy {
-    moid = intersight_fabric_eth_network_group_policy.aci.moid
+    moid = intersight_fabric_eth_network_group_policy.vlan-1599-native.moid
   }
 
   fabric_eth_network_control_policy {
@@ -76,7 +76,7 @@ resource "intersight_vnic_eth_if" "aci-b" {
   }
 
   fabric_eth_network_group_policy {
-    moid = intersight_fabric_eth_network_group_policy.aci.moid
+    moid = intersight_fabric_eth_network_group_policy.vlan-1599-native.moid
   }
 
   fabric_eth_network_control_policy {
