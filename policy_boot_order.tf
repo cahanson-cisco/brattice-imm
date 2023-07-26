@@ -52,14 +52,14 @@ resource "intersight_boot_precision_policy" "san_boot" {
   enforce_uefi_secure_boot = false
 
   boot_devices {
-    enabled        = true
-    name           = "pure-a"
-    interface_name = "vhba-a"
-    object_type    = "boot.San"
+    enabled     = true
+    name        = "pure-a"
+    object_type = "boot.San"
     additional_properties = jsonencode({
-      Slot = "MLOM"
-      lun  = 1
-      wwpn = "52:4A:93:71:20:FF:59:00"
+      interface_name = "vhba-a"
+      Slot           = "MLOM"
+      lun            = 1
+      wwpn           = "52:4A:93:71:20:FF:59:00"
       Bootloader = {
         Name       = "BOOTX64.EFI"
         Path       = "\\EFI\\BOOT"
@@ -68,14 +68,14 @@ resource "intersight_boot_precision_policy" "san_boot" {
     })
   }
   boot_devices {
-    enabled        = true
-    name           = "pure-b"
-    interface_name = "vhba-b"
-    object_type    = "boot.San"
+    enabled     = true
+    name        = "pure-b"
+    object_type = "boot.San"
     additional_properties = jsonencode({
-      Slot = "MLOM"
-      lun  = 1
-      wwpn = "52:4A:93:71:20:FF:59:10"
+      interface_name = "vhba-b"
+      Slot           = "MLOM"
+      lun            = 1
+      wwpn           = "52:4A:93:71:20:FF:59:10"
       Bootloader = {
         Name       = "BOOTX64.EFI"
         Path       = "\\EFI\\BOOT"
