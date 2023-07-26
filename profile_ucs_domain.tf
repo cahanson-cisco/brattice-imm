@@ -42,9 +42,33 @@ resource "intersight_fabric_switch_profile" "brattice-6454-A-pb" {
 
   type = "instance"
 
-  policy_bucket { # VLAN Configuration
+  policy_bucket {
     moid        = intersight_fabric_eth_network_policy.brattice-vlans.moid
     object_type = intersight_fabric_eth_network_policy.brattice-vlans.object_type
+  }
+  policy_bucket {
+    moid        = intersight_fabric_fc_network_policy.brattice-A.moid
+    object_type = intersight_fabric_fc_network_policy.brattice-A.object_type
+  }
+  policy_bucket {
+    moid        = intersight_fabric_port_policy.brattice-6454-A.moid
+    object_type = intersight_fabric_port_policy.brattice-6454-A.object_type
+  }
+  policy_bucket {
+    moid        = intersight_ntp_policy.brattice.moid
+    object_type = intersight_ntp_policy.brattice.object_type
+  }
+  policy_bucket {
+    moid        = intersight_fabric_switch_control_policy.direct-attached.moid
+    object_type = intersight_fabric_switch_control_policy.direct-attached.object_type
+  }
+  policy_bucket {
+    moid        = intersight_fabric_system_qos_policy.default.moid
+    object_type = intersight_fabric_system_qos_policy.default.object_type
+  }
+  policy_bucket {
+    moid        = intersight_networkconfig_policy.brattice.moid
+    object_type = intersight_networkconfig_policy.brattice.object_type
   }
 
   switch_cluster_profile {

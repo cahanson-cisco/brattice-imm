@@ -6,11 +6,6 @@ resource "intersight_fabric_port_policy" "brattice-6454-A" {
   }
 
   device_model = "UCS-FI-6454"
-
-  profiles {
-    moid        = intersight_fabric_switch_profile.brattice-6454-A.moid
-    object_type = intersight_fabric_switch_profile.brattice-6454-A.object_type
-  }
 }
 
 resource "intersight_fabric_port_policy" "brattice-6454-B" {
@@ -18,12 +13,6 @@ resource "intersight_fabric_port_policy" "brattice-6454-B" {
   tags = [local.terraform]
   organization {
     moid = local.organization
-  }
-
-  device_model = "UCS-FI-6454"
-  profiles {
-    moid        = intersight_fabric_switch_profile.brattice-6454-B.moid
-    object_type = intersight_fabric_switch_profile.brattice-6454-B.object_type
   }
 }
 

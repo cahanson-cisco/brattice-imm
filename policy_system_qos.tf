@@ -70,12 +70,4 @@ resource "intersight_fabric_system_qos_policy" "default" {
     packet_drop        = false
     weight             = 5
   }
-  profiles {
-    moid        = intersight_fabric_switch_profile.brattice-6454-A.moid
-    object_type = intersight_fabric_switch_profile.brattice-6454-A.object_type
-  }
-  profiles {
-    moid        = intersight_fabric_switch_profile.brattice-6454-B.moid
-    object_type = intersight_fabric_switch_profile.brattice-6454-B.object_type
-  }
 }

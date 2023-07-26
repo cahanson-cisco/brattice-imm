@@ -6,11 +6,6 @@ resource "intersight_fabric_fc_network_policy" "brattice-A" {
   }
 
   enable_trunking = false
-
-  profiles {
-    moid        = intersight_fabric_switch_profile.brattice-6454-A.moid
-    object_type = intersight_fabric_switch_profile.brattice-6454-A.object_type
-  }
 }
 
 resource "intersight_fabric_vsan" "vsan101" {
@@ -35,11 +30,6 @@ resource "intersight_fabric_fc_network_policy" "brattice-B" {
   }
 
   enable_trunking = false
-
-  profiles {
-    moid        = intersight_fabric_switch_profile.brattice-6454-B.moid
-    object_type = intersight_fabric_switch_profile.brattice-6454-B.object_type
-  }
 }
 
 resource "intersight_fabric_vsan" "vsan102" {

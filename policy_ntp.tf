@@ -11,13 +11,4 @@ resource "intersight_ntp_policy" "brattice" {
     "10.0.0.253",
   ]
   timezone = "Etc/GMT"
-
-  profiles {
-    moid        = intersight_fabric_switch_profile.brattice-6454-A.moid
-    object_type = intersight_fabric_switch_profile.brattice-6454-A.object_type
-  }
-  profiles {
-    moid        = intersight_fabric_switch_profile.brattice-6454-B.moid
-    object_type = intersight_fabric_switch_profile.brattice-6454-B.object_type
-  }
 }
