@@ -1,6 +1,12 @@
 resource "intersight_power_policy" "grid_last_state" {
   name = "grid_last_state"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }

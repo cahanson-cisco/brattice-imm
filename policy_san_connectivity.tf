@@ -1,6 +1,12 @@
 resource "intersight_vnic_san_connectivity_policy" "brattice-fc" {
   name = "brattice-fc"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }
@@ -17,7 +23,13 @@ resource "intersight_vnic_san_connectivity_policy" "brattice-fc" {
 
 resource "intersight_vnic_fc_if" "vhba-a" {
   name = "vhba-a"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
 
   type              = "fc-initiator"
   order             = 0
@@ -57,7 +69,13 @@ resource "intersight_vnic_fc_if" "vhba-a" {
 
 resource "intersight_vnic_fc_if" "vhba-b" {
   name = "vhba-b"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
 
   type              = "fc-initiator"
   order             = 1

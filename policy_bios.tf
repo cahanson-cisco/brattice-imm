@@ -1,6 +1,12 @@
 resource "intersight_bios_policy" "vmware-esxi" {
   name = "vmware-esxi"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }
@@ -15,7 +21,13 @@ resource "intersight_bios_policy" "vmware-esxi" {
 
 resource "intersight_bios_policy" "linux" {
   name = "linux"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }
@@ -26,4 +38,5 @@ resource "intersight_bios_policy" "linux" {
   processor_c6report       = "enabled"
   energy_efficient_turbo   = "enabled"
   work_load_config         = "Balanced"
+  lom_ports_all_state      = "disabled"
 }

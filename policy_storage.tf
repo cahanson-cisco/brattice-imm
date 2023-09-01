@@ -1,6 +1,12 @@
 resource "intersight_storage_storage_policy" "m2_raid1" {
   name = "m2_raid1"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }

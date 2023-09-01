@@ -1,6 +1,12 @@
 resource "intersight_fabric_switch_cluster_profile" "brattice-6454" {
   name = "brattice-6454"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }
@@ -9,7 +15,13 @@ resource "intersight_fabric_switch_cluster_profile" "brattice-6454" {
 
 resource "intersight_fabric_switch_profile" "brattice-6454-A" {
   name = "brattice-6454-A"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
 
   type = "instance"
 
@@ -48,7 +60,13 @@ resource "intersight_fabric_switch_profile" "brattice-6454-A" {
 }
 resource "intersight_fabric_switch_profile" "brattice-6454-B" {
   name = "brattice-6454-B"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
 
   type = "instance"
 

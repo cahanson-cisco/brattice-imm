@@ -1,6 +1,12 @@
 resource "intersight_fabric_fc_network_policy" "brattice-A" {
   name = "brattice-A"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }
@@ -10,7 +16,13 @@ resource "intersight_fabric_fc_network_policy" "brattice-A" {
 
 resource "intersight_fabric_vsan" "vsan101" {
   name = "vsan101"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
 
   default_zoning = "Enabled"
   vsan_scope     = "Storage"
@@ -24,7 +36,13 @@ resource "intersight_fabric_vsan" "vsan101" {
 
 resource "intersight_fabric_fc_network_policy" "brattice-B" {
   name = "brattice-B"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }
@@ -34,7 +52,13 @@ resource "intersight_fabric_fc_network_policy" "brattice-B" {
 
 resource "intersight_fabric_vsan" "vsan102" {
   name = "vsan102"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
 
   default_zoning = "Enabled"
   vsan_scope     = "Storage"

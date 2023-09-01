@@ -1,6 +1,12 @@
 resource "intersight_fabric_eth_network_group_policy" "nxos" {
   name = "nxos"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }
@@ -13,7 +19,13 @@ resource "intersight_fabric_eth_network_group_policy" "nxos" {
 
 resource "intersight_fabric_eth_network_group_policy" "aci" {
   name = "aci"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }
@@ -26,7 +38,13 @@ resource "intersight_fabric_eth_network_group_policy" "aci" {
 
 resource "intersight_fabric_eth_network_group_policy" "vlan-840-native" {
   name = "vlan-840-native"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }
@@ -37,15 +55,21 @@ resource "intersight_fabric_eth_network_group_policy" "vlan-840-native" {
   }
 }
 
-resource "intersight_fabric_eth_network_group_policy" "vlan-1599-native" {
-  name = "vlan-1599-native"
-  tags = [local.terraform]
+resource "intersight_fabric_eth_network_group_policy" "vlan-1500-native" {
+  name = "vlan-1500-native"
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }
 
   vlan_settings {
-    native_vlan   = var.network_map_aci.aci_1599.vlan
-    allowed_vlans = var.network_map_aci.aci_1599.vlan
+    native_vlan   = var.network_map_aci.aci_1500.vlan
+    allowed_vlans = var.network_map_aci.aci_1500.vlan
   }
 }

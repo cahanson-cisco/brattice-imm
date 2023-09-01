@@ -1,6 +1,12 @@
 resource "intersight_fabric_fc_zone_policy" "brattice-A" {
   name = "brattice-A"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }
@@ -46,7 +52,13 @@ resource "intersight_fabric_fc_zone_policy" "brattice-A" {
 
 resource "intersight_fabric_fc_zone_policy" "brattice-B" {
   name = "brattice-B"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }

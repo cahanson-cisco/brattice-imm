@@ -8,7 +8,13 @@ resource "intersight_chassis_profile" "brattice-chassis" {
   }
 
   name = each.value.name
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }

@@ -1,10 +1,17 @@
 resource "intersight_firmware_policy" "latest" {
-  name            = "latest"
-  tags            = [local.terraform]
-  target_platform = "FIAttached"
+  name = "latest"
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }
+
+  target_platform = "FIAttached"
 
   model_bundle_combo {
     model_family   = "UCSX-210C-M6"

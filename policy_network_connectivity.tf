@@ -1,6 +1,12 @@
 resource "intersight_networkconfig_policy" "brattice" {
   name = "brattice"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }

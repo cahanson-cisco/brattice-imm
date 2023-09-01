@@ -1,6 +1,12 @@
 resource "intersight_vmedia_policy" "vmedia_enabled" {
   name = "vmedia_enabled"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }

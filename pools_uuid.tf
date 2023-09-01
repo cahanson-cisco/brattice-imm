@@ -9,7 +9,13 @@ resource "random_id" "uuid_suffix_seed" {
 
 resource "intersight_uuidpool_pool" "default" {
   name = "default"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }

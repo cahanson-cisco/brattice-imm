@@ -1,6 +1,12 @@
 resource "intersight_fabric_port_policy" "brattice-6454-A" {
   name = "brattice-6454-A"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }
@@ -10,7 +16,13 @@ resource "intersight_fabric_port_policy" "brattice-6454-A" {
 
 resource "intersight_fabric_port_policy" "brattice-6454-B" {
   name = "brattice-6454-B"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }

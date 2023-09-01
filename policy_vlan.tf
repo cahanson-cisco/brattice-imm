@@ -1,6 +1,12 @@
 resource "intersight_fabric_eth_network_policy" "brattice-vlans" {
   name = "brattice-vlans"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }
@@ -10,7 +16,13 @@ resource "intersight_fabric_vlan" "vlans_nxos" {
   for_each = var.network_map_nxos
 
   name = each.key
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
 
   auto_allow_on_uplinks = false
   is_native             = false
@@ -29,7 +41,13 @@ resource "intersight_fabric_vlan" "aci" {
   for_each = var.network_map_aci
 
   name = each.key
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
 
   auto_allow_on_uplinks = false
   is_native             = false

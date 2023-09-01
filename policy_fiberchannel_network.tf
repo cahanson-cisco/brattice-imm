@@ -1,6 +1,12 @@
 resource "intersight_vnic_fc_network_policy" "vsan101" {
   name = "vsan101"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }
@@ -12,7 +18,13 @@ resource "intersight_vnic_fc_network_policy" "vsan101" {
 
 resource "intersight_vnic_fc_network_policy" "vsan102" {
   name = "vsan102"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }

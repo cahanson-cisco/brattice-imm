@@ -1,6 +1,12 @@
 resource "intersight_fcpool_pool" "brattice_wwnn" {
   name = "brattice_wwnn"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }
@@ -17,7 +23,13 @@ resource "intersight_fcpool_pool" "brattice_wwnn" {
 
 resource "intersight_fcpool_pool" "brattice_wwpn_a" {
   name = "brattice_wwpn_a"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }
@@ -34,7 +46,13 @@ resource "intersight_fcpool_pool" "brattice_wwpn_a" {
 
 resource "intersight_fcpool_pool" "brattice_wwpn_b" {
   name = "brattice_wwpn_b"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }

@@ -1,6 +1,12 @@
 resource "intersight_iam_end_point_user_policy" "default" {
   name = "default"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }
@@ -18,7 +24,13 @@ resource "intersight_iam_end_point_user_policy" "default" {
 
 resource "intersight_iam_end_point_user" "admin" {
   name = "admin"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }
@@ -31,7 +43,13 @@ data "intersight_iam_end_point_role" "imc_admin" {
 }
 
 resource "intersight_iam_end_point_user_role" "admin" {
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
 
   enabled  = true
   password = var.imc_local_admin_password

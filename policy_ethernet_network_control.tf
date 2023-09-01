@@ -1,6 +1,12 @@
 resource "intersight_fabric_eth_network_control_policy" "cdp_enable" {
   name = "cdp_enable"
-  tags = [local.terraform]
+  dynamic "tags" {
+    for_each = local.tags
+    content {
+      key   = tags.key
+      value = tags.value
+    }
+  }
   organization {
     moid = local.organization
   }
