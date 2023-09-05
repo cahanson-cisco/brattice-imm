@@ -150,8 +150,8 @@ resource "intersight_server_profile_template" "pilgrim" {
   }
 
   policy_bucket {
-    moid        = intersight_boot_precision_policy.san_boot.moid
-    object_type = intersight_boot_precision_policy.san_boot.object_type
+    moid        = intersight_boot_precision_policy.m2_boot.moid
+    object_type = intersight_boot_precision_policy.m2_boot.object_type
   }
 
   policy_bucket {
@@ -177,6 +177,11 @@ resource "intersight_server_profile_template" "pilgrim" {
   policy_bucket {
     moid        = intersight_firmware_policy.latest.moid
     object_type = intersight_firmware_policy.latest.object_type
+  }
+
+  policy_bucket {
+    moid        = intersight_storage_storage_policy.m2_raid1.moid
+    object_type = intersight_storage_storage_policy.m2_raid1.object_type
   }
 
   policy_bucket {
